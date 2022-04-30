@@ -17,6 +17,56 @@
 		2B3CF050281CD764004BC845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF026281CD762004BC845 /* ContentView.swift */; };
 		2B3CF051281CD764004BC845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3CF027281CD764004BC845 /* Assets.xcassets */; };
 		2B3CF052281CD764004BC845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3CF027281CD764004BC845 /* Assets.xcassets */; };
+		2B3CF072281CD856004BC845 /* Untamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF066281CD855004BC845 /* Untamped.swift */; };
+		2B3CF073281CD856004BC845 /* Untamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF066281CD855004BC845 /* Untamped.swift */; };
+		2B3CF074281CD856004BC845 /* Untamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF066281CD855004BC845 /* Untamped.swift */; };
+		2B3CF075281CD856004BC845 /* Untamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF066281CD855004BC845 /* Untamped.swift */; };
+		2B3CF076281CD856004BC845 /* Tamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF067281CD855004BC845 /* Tamped.swift */; };
+		2B3CF077281CD856004BC845 /* Tamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF067281CD855004BC845 /* Tamped.swift */; };
+		2B3CF078281CD856004BC845 /* Tamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF067281CD855004BC845 /* Tamped.swift */; };
+		2B3CF079281CD856004BC845 /* Tamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF067281CD855004BC845 /* Tamped.swift */; };
+		2B3CF07A281CD856004BC845 /* MonteCarloInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF068281CD855004BC845 /* MonteCarloInt.swift */; };
+		2B3CF07B281CD856004BC845 /* MonteCarloInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF068281CD855004BC845 /* MonteCarloInt.swift */; };
+		2B3CF07C281CD856004BC845 /* MonteCarloInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF068281CD855004BC845 /* MonteCarloInt.swift */; };
+		2B3CF07D281CD856004BC845 /* MonteCarloInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF068281CD855004BC845 /* MonteCarloInt.swift */; };
+		2B3CF07E281CD856004BC845 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF069281CD855004BC845 /* DrawingView.swift */; };
+		2B3CF07F281CD856004BC845 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF069281CD855004BC845 /* DrawingView.swift */; };
+		2B3CF080281CD856004BC845 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF069281CD855004BC845 /* DrawingView.swift */; };
+		2B3CF081281CD856004BC845 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF069281CD855004BC845 /* DrawingView.swift */; };
+		2B3CF082281CD856004BC845 /* FindingZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06A281CD855004BC845 /* FindingZero.swift */; };
+		2B3CF083281CD856004BC845 /* FindingZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06A281CD855004BC845 /* FindingZero.swift */; };
+		2B3CF084281CD856004BC845 /* FindingZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06A281CD855004BC845 /* FindingZero.swift */; };
+		2B3CF085281CD856004BC845 /* FindingZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06A281CD855004BC845 /* FindingZero.swift */; };
+		2B3CF086281CD856004BC845 /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */; };
+		2B3CF087281CD856004BC845 /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */; };
+		2B3CF088281CD856004BC845 /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */; };
+		2B3CF089281CD856004BC845 /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */; };
+		2B3CF08A281CD856004BC845 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06D281CD855004BC845 /* CorePlot.swift */; };
+		2B3CF08B281CD856004BC845 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06D281CD855004BC845 /* CorePlot.swift */; };
+		2B3CF08C281CD856004BC845 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06D281CD855004BC845 /* CorePlot.swift */; };
+		2B3CF08D281CD856004BC845 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06D281CD855004BC845 /* CorePlot.swift */; };
+		2B3CF08E281CD856004BC845 /* PlotDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06E281CD855004BC845 /* PlotDataClass.swift */; };
+		2B3CF08F281CD856004BC845 /* PlotDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06E281CD855004BC845 /* PlotDataClass.swift */; };
+		2B3CF090281CD856004BC845 /* PlotDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06E281CD855004BC845 /* PlotDataClass.swift */; };
+		2B3CF091281CD856004BC845 /* PlotDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06E281CD855004BC845 /* PlotDataClass.swift */; };
+		2B3CF092281CD856004BC845 /* PlotClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06F281CD855004BC845 /* PlotClass.swift */; };
+		2B3CF093281CD856004BC845 /* PlotClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06F281CD855004BC845 /* PlotClass.swift */; };
+		2B3CF094281CD856004BC845 /* PlotClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06F281CD855004BC845 /* PlotClass.swift */; };
+		2B3CF095281CD856004BC845 /* PlotClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF06F281CD855004BC845 /* PlotClass.swift */; };
+		2B3CF096281CD856004BC845 /* NeutronSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */; };
+		2B3CF097281CD856004BC845 /* NeutronSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */; };
+		2B3CF098281CD856004BC845 /* NeutronSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */; };
+		2B3CF099281CD856004BC845 /* NeutronSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */; };
+		2B3CF09A281CD856004BC845 /* Efficiency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF071281CD855004BC845 /* Efficiency.swift */; };
+		2B3CF09B281CD856004BC845 /* Efficiency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF071281CD855004BC845 /* Efficiency.swift */; };
+		2B3CF09C281CD856004BC845 /* Efficiency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF071281CD855004BC845 /* Efficiency.swift */; };
+		2B3CF09D281CD856004BC845 /* Efficiency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF071281CD855004BC845 /* Efficiency.swift */; };
+		2B3CF0A0281CD8FD004BC845 /* CorePlot in Frameworks */ = {isa = PBXBuildFile; productRef = 2B3CF09F281CD8FD004BC845 /* CorePlot */; };
+		2B3CF0A3281CD92A004BC845 /* CorePlot in Frameworks */ = {isa = PBXBuildFile; productRef = 2B3CF0A2281CD92A004BC845 /* CorePlot */; };
+		2B3CF0A5281CD973004BC845 /* CorePlot in Frameworks */ = {isa = PBXBuildFile; productRef = 2B3CF0A4281CD973004BC845 /* CorePlot */; };
+		2B3CF0A7281CD979004BC845 /* CorePlot in Frameworks */ = {isa = PBXBuildFile; productRef = 2B3CF0A6281CD979004BC845 /* CorePlot */; };
+		2B3CF0A8281CDB5A004BC845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF026281CD762004BC845 /* ContentView.swift */; };
+		2B3CF0A9281CDB5B004BC845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF026281CD762004BC845 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +99,17 @@
 		2B3CF045281CD764004BC845 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3CF049281CD764004BC845 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		2B3CF04B281CD764004BC845 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		2B3CF066281CD855004BC845 /* Untamped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Untamped.swift; sourceTree = "<group>"; };
+		2B3CF067281CD855004BC845 /* Tamped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tamped.swift; sourceTree = "<group>"; };
+		2B3CF068281CD855004BC845 /* MonteCarloInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonteCarloInt.swift; sourceTree = "<group>"; };
+		2B3CF069281CD855004BC845 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		2B3CF06A281CD855004BC845 /* FindingZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindingZero.swift; sourceTree = "<group>"; };
+		2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangingPlotParameters.swift; sourceTree = "<group>"; };
+		2B3CF06D281CD855004BC845 /* CorePlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlot.swift; sourceTree = "<group>"; };
+		2B3CF06E281CD855004BC845 /* PlotDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotDataClass.swift; sourceTree = "<group>"; };
+		2B3CF06F281CD855004BC845 /* PlotClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotClass.swift; sourceTree = "<group>"; };
+		2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeutronSpectrum.swift; sourceTree = "<group>"; };
+		2B3CF071281CD855004BC845 /* Efficiency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Efficiency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF0A3281CD92A004BC845 /* CorePlot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF0A0281CD8FD004BC845 /* CorePlot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF0A5281CD973004BC845 /* CorePlot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF0A7281CD979004BC845 /* CorePlot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +156,7 @@
 				2B3CF03C281CD764004BC845 /* Tests iOS */,
 				2B3CF048281CD764004BC845 /* Tests macOS */,
 				2B3CF02D281CD764004BC845 /* Products */,
+				2B3CF0A1281CD92A004BC845 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +165,17 @@
 			children = (
 				2B3CF025281CD762004BC845 /* ManhattanProjectReedApp.swift */,
 				2B3CF026281CD762004BC845 /* ContentView.swift */,
+				2B3CF069281CD855004BC845 /* DrawingView.swift */,
+				2B3CF071281CD855004BC845 /* Efficiency.swift */,
+				2B3CF06A281CD855004BC845 /* FindingZero.swift */,
+				2B3CF068281CD855004BC845 /* MonteCarloInt.swift */,
+				2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */,
+				2B3CF067281CD855004BC845 /* Tamped.swift */,
+				2B3CF066281CD855004BC845 /* Untamped.swift */,
+				2B3CF06D281CD855004BC845 /* CorePlot.swift */,
+				2B3CF06C281CD855004BC845 /* ChangingPlotParameters.swift */,
+				2B3CF06E281CD855004BC845 /* PlotDataClass.swift */,
+				2B3CF06F281CD855004BC845 /* PlotClass.swift */,
 				2B3CF027281CD764004BC845 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -141,6 +218,13 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		2B3CF0A1281CD92A004BC845 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,6 +241,9 @@
 			dependencies = (
 			);
 			name = "ManhattanProjectReed (iOS)";
+			packageProductDependencies = (
+				2B3CF0A2281CD92A004BC845 /* CorePlot */,
+			);
 			productName = "ManhattanProjectReed (iOS)";
 			productReference = 2B3CF02C281CD764004BC845 /* ManhattanProjectReed.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +261,9 @@
 			dependencies = (
 			);
 			name = "ManhattanProjectReed (macOS)";
+			packageProductDependencies = (
+				2B3CF09F281CD8FD004BC845 /* CorePlot */,
+			);
 			productName = "ManhattanProjectReed (macOS)";
 			productReference = 2B3CF032281CD764004BC845 /* ManhattanProjectReed.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +282,9 @@
 				2B3CF03B281CD764004BC845 /* PBXTargetDependency */,
 			);
 			name = "Tests iOS";
+			packageProductDependencies = (
+				2B3CF0A4281CD973004BC845 /* CorePlot */,
+			);
 			productName = "Tests iOS";
 			productReference = 2B3CF039281CD764004BC845 /* Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -210,6 +303,9 @@
 				2B3CF047281CD764004BC845 /* PBXTargetDependency */,
 			);
 			name = "Tests macOS";
+			packageProductDependencies = (
+				2B3CF0A6281CD979004BC845 /* CorePlot */,
+			);
 			productName = "Tests macOS";
 			productReference = 2B3CF045281CD764004BC845 /* Tests macOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -249,6 +345,9 @@
 				Base,
 			);
 			mainGroup = 2B3CF01F281CD762004BC845;
+			packageReferences = (
+				2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */,
+			);
 			productRefGroup = 2B3CF02D281CD764004BC845 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -299,7 +398,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF09A281CD856004BC845 /* Efficiency.swift in Sources */,
+				2B3CF082281CD856004BC845 /* FindingZero.swift in Sources */,
+				2B3CF086281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
 				2B3CF04F281CD764004BC845 /* ContentView.swift in Sources */,
+				2B3CF08A281CD856004BC845 /* CorePlot.swift in Sources */,
+				2B3CF072281CD856004BC845 /* Untamped.swift in Sources */,
+				2B3CF07A281CD856004BC845 /* MonteCarloInt.swift in Sources */,
+				2B3CF096281CD856004BC845 /* NeutronSpectrum.swift in Sources */,
+				2B3CF07E281CD856004BC845 /* DrawingView.swift in Sources */,
+				2B3CF08E281CD856004BC845 /* PlotDataClass.swift in Sources */,
+				2B3CF092281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF076281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04D281CD764004BC845 /* ManhattanProjectReedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +418,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF09B281CD856004BC845 /* Efficiency.swift in Sources */,
+				2B3CF083281CD856004BC845 /* FindingZero.swift in Sources */,
+				2B3CF087281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
 				2B3CF050281CD764004BC845 /* ContentView.swift in Sources */,
+				2B3CF08B281CD856004BC845 /* CorePlot.swift in Sources */,
+				2B3CF073281CD856004BC845 /* Untamped.swift in Sources */,
+				2B3CF07B281CD856004BC845 /* MonteCarloInt.swift in Sources */,
+				2B3CF097281CD856004BC845 /* NeutronSpectrum.swift in Sources */,
+				2B3CF07F281CD856004BC845 /* DrawingView.swift in Sources */,
+				2B3CF08F281CD856004BC845 /* PlotDataClass.swift in Sources */,
+				2B3CF093281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF077281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04E281CD764004BC845 /* ManhattanProjectReedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +438,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF09C281CD856004BC845 /* Efficiency.swift in Sources */,
+				2B3CF084281CD856004BC845 /* FindingZero.swift in Sources */,
+				2B3CF0A8281CDB5A004BC845 /* ContentView.swift in Sources */,
+				2B3CF088281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
 				2B3CF040281CD764004BC845 /* Tests_iOSLaunchTests.swift in Sources */,
+				2B3CF08C281CD856004BC845 /* CorePlot.swift in Sources */,
+				2B3CF074281CD856004BC845 /* Untamped.swift in Sources */,
+				2B3CF07C281CD856004BC845 /* MonteCarloInt.swift in Sources */,
+				2B3CF098281CD856004BC845 /* NeutronSpectrum.swift in Sources */,
+				2B3CF080281CD856004BC845 /* DrawingView.swift in Sources */,
+				2B3CF090281CD856004BC845 /* PlotDataClass.swift in Sources */,
+				2B3CF094281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF078281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF03E281CD764004BC845 /* Tests_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +459,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CF09D281CD856004BC845 /* Efficiency.swift in Sources */,
+				2B3CF085281CD856004BC845 /* FindingZero.swift in Sources */,
+				2B3CF0A9281CDB5B004BC845 /* ContentView.swift in Sources */,
+				2B3CF089281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
 				2B3CF04C281CD764004BC845 /* Tests_macOSLaunchTests.swift in Sources */,
+				2B3CF08D281CD856004BC845 /* CorePlot.swift in Sources */,
+				2B3CF075281CD856004BC845 /* Untamped.swift in Sources */,
+				2B3CF07D281CD856004BC845 /* MonteCarloInt.swift in Sources */,
+				2B3CF099281CD856004BC845 /* NeutronSpectrum.swift in Sources */,
+				2B3CF081281CD856004BC845 /* DrawingView.swift in Sources */,
+				2B3CF091281CD856004BC845 /* PlotDataClass.swift in Sources */,
+				2B3CF095281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF079281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04A281CD764004BC845 /* Tests_macOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +838,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "http://github.com/core-plot/core-plot";
+			requirement = {
+				branch = "release-2.4";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B3CF09F281CD8FD004BC845 /* CorePlot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */;
+			productName = CorePlot;
+		};
+		2B3CF0A2281CD92A004BC845 /* CorePlot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */;
+			productName = CorePlot;
+		};
+		2B3CF0A4281CD973004BC845 /* CorePlot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */;
+			productName = CorePlot;
+		};
+		2B3CF0A6281CD979004BC845 /* CorePlot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B3CF09E281CD8FD004BC845 /* XCRemoteSwiftPackageReference "core-plot" */;
+			productName = CorePlot;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B3CF020281CD762004BC845 /* Project object */;
 }

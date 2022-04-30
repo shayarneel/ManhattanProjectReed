@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import ManhattanProjectReed
 
 class Tests_macOS: XCTestCase {
 
@@ -30,6 +31,95 @@ class Tests_macOS: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+
+    
+//    func testf()  throws {
+//        let twoSphereFission = TwoSphereFission()
+//        var f = twoSphereFission.massRatio(m1: 141, m2: 92)
+//        var answer = 1.53
+//            XCTAssertEqual(f, answer, accuracy: 1.0E-2, "Was not equal to this resolution.")
+//
+//        f = twoSphereFission.massRatio(m1: 92, m2: 141)
+//        answer = 1.53
+//        XCTAssertEqual(f, answer, accuracy: 1.0E-2, "Was not equal to this resolution.")
+//
+//        f = twoSphereFission.massRatio(m1: 141, m2: 141)
+//        answer = 1.00
+//        XCTAssertEqual(f, answer, accuracy: 1.0E-2, "Was not equal to this resolution.")
+//
+//        }
+//
+    func testd()  throws {
+        let untamped = Untamped()
+        var d = untamped.d(lfisscore: 16.89, ltranscore: 3.596, nu: 2.637)
+        var danswer = 3.517
+        XCTAssertEqual(d, danswer, accuracy: 1.0E-3, "Was not equal to this resolution.")
+        
+        d = untamped.d(lfisscore: 14.14, ltranscore: 4.108, nu: 3.172)
+        danswer = 2.985
+        XCTAssertEqual(d, danswer, accuracy: 1.0E-3, "Was not equal to this resolution.")
+        }
+    
+    func testEta()  throws {
+        let untamped = Untamped()
+        var eta = untamped.eta(lfisscore: 16.89, ltranscore: 3.596, nu: 2.637)
+        var etaanswer = 0.6817
+        XCTAssertEqual(eta, etaanswer, accuracy: 1.0E-3, "Was not equal to this resolution.")
+        eta = untamped.eta(lfisscore: 14.14, ltranscore: 4.108, nu: 3.172)
+        etaanswer = 0.9174
+        XCTAssertEqual(eta, etaanswer, accuracy: 1.0E-3, "Was not equal to this resolution.")
+        }
+    
+    
+    func testURC()  throws {
+        let untamped = Untamped()
+        var urc = untamped.untampedRCritical(untampedRC: 8.366, lfisscore: 16.89, ltranscore: 3.596, nu: 2.637)
+        var urcanswer = 0.0
+        XCTAssertEqual(urc, urcanswer, accuracy: 1.0E-3, "Was not equal to this resolution.")
+    
+        urc = untamped.untampedRCritical(untampedRC: 6.345, lfisscore: 14.14, ltranscore: 4.108, nu: 3.172)
+        urcanswer = 0.0
+        XCTAssertEqual(urc, urcanswer, accuracy: 1.0E-2, "Was not equal to this resolution.")
+        }
+    
+    func testBisection()  throws {
+        let zeroFinder = FindingZero()
+        var zero = zeroFinder.bisection(lb: -1.0, ub: 1.3)
+        var ans = 0.0
+        XCTAssertEqual(zero, ans, accuracy: 1.0E-12, "Was not equal to this resolution.")
+        }
+    
+    func testTRC()  throws {
+        let tamped = Tamped()
+        var trc = tamped.tampedRCritical(rCore: 3.517, rTamp: 10.551, ltranstamp: 0.878, ltranscore: 3.596, lfisscore: 16.89, sfisscore: 1.235, stranscore: (1.235+4.566), nu: 2.637)
+        var trcanswer = 0.0
+        XCTAssertEqual(trc, trcanswer, accuracy: 1.0E-2, "Was not equal to this resolution.")
+        }
+    
+    func testZeroURC()  throws {
+        let untamped = Untamped()
+        var urcZero = untamped.urcFinder(lfisscore: 14.14, ltranscore: 4.108, nu: 3.172)
+        var urcZeroAns = 0.000
+        XCTAssertEqual(urcZero, urcZeroAns, accuracy: 1.0E-2, "Was not equal to this resolution.")
+        }
+    
+    
+    func testv()  throws {
+        let efficiency = Efficiency()
+        var v = efficiency.avgV()
+        var vans = 3635408.36439
+        XCTAssertEqual(v,vans, accuracy: 1.0E-2, "Was not equal to this resolution.")
+        }
+    
+    func testEff()  throws {
+        let efficiency = Efficiency()
+        var eff = efficiency.eff(atomicMass: 238.02891, ltranscore: 3.596, rCritical: 8.366, rCore: 8.59, dCore: 18.71, nu: 2.637)
+        var effans = 0.01
+        XCTAssertEqual(eff,effans, accuracy: 1.0E-2, "Was not equal to this resolution.")
+            }
+    
+        
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
