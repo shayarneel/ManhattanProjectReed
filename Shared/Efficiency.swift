@@ -21,9 +21,9 @@ class Efficiency: NSObject, ObservableObject{
     ///   - dCore: density of core materical (g cm^-3)
     ///   - nu: numer of neutrons released per fission
     /// - Returns: mass that undegoes fission (g)
-    func fissMass(atomicMass: Double, ltranscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
+    func fissMass(atomicMass: Double, lfisscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
         
-        let e = eff(atomicMass: atomicMass, ltranscore: ltranscore, rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
+        let e = eff(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
         let mCore = (4.0/3.0) * Double.pi * pow(rCore, 3.0) * dCore
         
         let mFiss = e * mCore
@@ -42,9 +42,9 @@ class Efficiency: NSObject, ObservableObject{
     ///   - dCore: density of core materical (g cm^-3)
     ///   - nu: numer of neutrons released per fission
     /// - Returns: yield
-    func yield(atomicMass: Double, ltranscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
+    func yield(atomicMass: Double, lfisscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
         
-        let e = eff(atomicMass: atomicMass, ltranscore: ltranscore, rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
+        let e = eff(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
         let Ef = 170.0 * 1.6021 * 1.0E-13 // Set Fc to 170 MeV, converted to joules
         let n = numDensity(dCore: dCore, atomicMass: atomicMass)
         let V = (4.0/3.0) * Double.pi * pow(rCritical, 3.0)
@@ -53,6 +53,7 @@ class Efficiency: NSObject, ObservableObject{
         
         return Y
     }
+    
     
     /// eff: approximate efficiency calculation - eq 3.24 pg 3-10 small book
     /// - Parameters:
@@ -63,14 +64,14 @@ class Efficiency: NSObject, ObservableObject{
     ///   - dCore: density of core materical (g cm^-3)
     ///   - nu: numer of neutrons released per fission
     /// - Returns: efficiency
-    func eff(atomicMass: Double, ltranscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
+    func eff(atomicMass: Double, lfisscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
         
         let alpha = alpha(rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
         let rho = dCore
         let dR = deltaR(rCritical: rCritical, rCore: rCore)
         let effnum = pow(alpha, 2.0) * rho * dR
         
-        let tau = tau(ltranscore: ltranscore)
+        let tau = tau(lfisscore: lfisscore)
         let n = numDensity(dCore: dCore, atomicMass: atomicMass)
         let Ef = 170.0 * 1.6021 * 1.0E-13 // Set Fc to 170 MeV, converted to joules
         let effden = 8.0 * pow(tau, 2.0) * n * Ef
@@ -88,26 +89,25 @@ class Efficiency: NSObject, ObservableObject{
     /// - Returns: number density of atoms in atoms/sm^3
     func numDensity(dCore: Double, atomicMass: Double) -> Double{
         
-        let NA = 6.022 * 1.0E-23
+        let NA = 6.022 * 1.0E+23
         
         let nd = dCore * NA / atomicMass // return value in atomc/cm^3
         
         return nd
     }
     
-    /// deltaR: for efficiency approximation
-    /// - Parameters:
+    /// deltaR: for efficiency approximation - 2.59 pg 63
+    /// rCritical= C^{1/3} * rCore - pg 62 line 4 (R_{0} - rCritical,  r_{i} - rCore)
+    /// C = (rCritical / rCore)^{3}
+    ///
+    /// from
+    ///https://beckassets.blob.core.windows.net/product/readingsample/836423/9783642147081_excerpt_001.pdf    /// - Parameters:
     ///   - rCritical: critical core radius (cm)
     ///   - rCore: core radius input by user (cm)
     /// - Returns: deltaR  measurement
     func deltaR(rCritical: Double, rCore: Double) -> Double {
         
-        let drt1 = rCore
-        
-        let drRatio = rCore/rCritical
-        let drt2 = pow(drRatio, 1.0/2.0) - 1.0
-        
-        let dr = drt1 * drt2
+        let dr = rCore * (pow(rCore/rCritical, 1.0/2.0) - 1.0)
         
         return dr
     }
@@ -117,9 +117,9 @@ class Efficiency: NSObject, ObservableObject{
     /// - Parameters:
     ///   - ltranscore: mean free path for transmission (cm)
     /// - Returns: tau (s)
-    func tau(ltranscore: Double) -> Double {
+    func tau(lfisscore: Double) -> Double {
         
-        let tauNum = ltranscore
+        let tauNum = lfisscore
         let tauDen = avgV()
         let tauVal = tauNum/tauDen
         
@@ -158,14 +158,10 @@ class Efficiency: NSObject, ObservableObject{
     /// - Returns: the alpha parameter
     func alpha(rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
         
-        let at1 = nu - 1.0
-        
         let mCritical = (4.0/3.0) * Double.pi * pow(rCritical, 3.0) * dCore
         let mCore = (4.0/3.0) * Double.pi * pow(rCore, 3.0) * dCore
-        let mRatio = mCritical/mCore
-        let at2 = 1.0 - pow(mRatio, (2.0/3.0))
         
-        let al = at1 * at2
+        let al = (nu - 1.0) * (1.0 - pow((mCritical/mCore), 2.0/3.0))
         
         return al
     }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CorePlot
 
-class NeutronSpecturm: NSObject, ObservableObject{
+class NeutronSpectrum: NSObject, ObservableObject{
     
     @Published var pEnergyArray: [plotDataType] = []
     
@@ -18,7 +18,7 @@ class NeutronSpecturm: NSObject, ObservableObject{
         
         var energyVal = 0.0
         
-        for E in stride(from: 0.0, to: 15.0, by: 0.001){
+        for E in stride(from: 0.0, to: 10.0, by: 0.001){
             
             energyVal = pEnergy(energy: E)
             pEnergyArray.append([.X: E, .Y: energyVal])
@@ -43,7 +43,7 @@ class NeutronSpecturm: NSObject, ObservableObject{
 //This is the plot of the energy spectrum of the released neutrons. Formula taken from:
 //https://indico.cern.ch/event/145296/contributions/1381141/attachments/136909/194258/lecture24.pdf
     
-    /// pEnergy: Calculates teh expected energy spectrum for high energy neutronsin a fission process
+    /// pEnergy: Calculates the expected energy spectrum for high energy neutronsin a fission process
     /// - Parameters:
     ///   - energy: energy at which we are evaluating the probability function (MeV)
     /// - Returns: probability of emitting a neutron with given energy (MeV^-1)

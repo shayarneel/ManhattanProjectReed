@@ -84,4 +84,3 @@ struct drawIntegral: Shape {
         return (path)
     }
 }
-

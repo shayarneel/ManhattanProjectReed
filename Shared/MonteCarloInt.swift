@@ -10,7 +10,7 @@ import SwiftUI
 
 class MonteCarloInt: NSObject, ObservableObject {
     
-    let neutronSpectrum = NeutronSpecturm()
+    let neutronSpectrum = NeutronSpectrum()
     
     @MainActor @Published var insideData = [(xPoint: Double, yPoint: Double)]()
     @MainActor @Published var outsideData = [(xPoint: Double, yPoint: Double)]()
@@ -42,18 +42,14 @@ class MonteCarloInt: NSObject, ObservableObject {
     /// calculate the value of decaying exponential integral using monte carlo integration
     ///
     /// - Parameter sender: Any
-    func calculateIntVal(A: Double, atomicMass: Double) async {
-        
-        let lowerBound = neutronSpectrum.bEnergy(A: A, atomicMass: atomicMass)
-        let upperBound = 15.0
-        let min = 0.0
-        let max = 0.35
+    func calculateIntVal(lowerBoundVal: Double, upperBoundVal: Double, minVal: Double, maxVal: Double) async {
         
         var maxGuesses = 0.0
+        let Area = (upperBoundVal - lowerBoundVal)*(maxVal - minVal)
         
         maxGuesses = Double(guesses)
         
-        let newValue = await calculateMonteCarloIntegral(A: A, atomicMass: atomicMass)
+        let newValue = await calculateMonteCarloIntegral(lowerBound: lowerBoundVal, upperBound: upperBoundVal, min: minVal, max: maxVal, maxGuesses: maxGuesses)
         
         totalIntegral = totalIntegral + newValue
         
@@ -63,14 +59,13 @@ class MonteCarloInt: NSObject, ObservableObject {
         
         //totalGuessesString = "\(totalGuesses)"
         
-        ///Calculates the value of integral by normalizing to the bounding box
+        ///Calculates the value of integral by normalizing to teh bounding box
         
-        let area = (upperBound - lowerBound) * (max - min)
-        intval = totalIntegral/Double(totalGuesses) * area
+        intval = totalIntegral/Double(totalGuesses) * Area
         
         await updateIntValString(text: "\(intval)")
         
-        ///updates the numerically comptued integral
+        //updates the numerically comptued integral
         
        
         
@@ -85,15 +80,9 @@ class MonteCarloInt: NSObject, ObservableObject {
     ///   - maxval: highest y-axis value within which you want to intergrate (should be the maximum value of the function within the bounds of integration)
     ///   - maxGuesses: number of guesses to use in the calculaton
     /// - Returns: ratio of points inside to total guesses. Must mulitply by area of box in calling function
-    func calculateMonteCarloIntegral(A: Double, atomicMass: Double) async -> Double {
+    func calculateMonteCarloIntegral(lowerBound: Double, upperBound: Double, min: Double, max: Double, maxGuesses: Double) async -> Double {
         
-        let lowerBound = neutronSpectrum.bEnergy(A: A, atomicMass: atomicMass)
-        let upperBound = 15.0
-        let min = 0.0
-        let max = 0.35
-        let maxGuesses = 1000.0
-        
-        var numberOfGuesses = 1000.0
+        var numberOfGuesses = 0.0
         var pointUnderCurve = 0.0
         var integral = 0.0
         var point = (xPoint: 0.0, yPoint: 0.0)
@@ -215,4 +204,3 @@ class MonteCarloInt: NSObject, ObservableObject {
     }
 
 }
-

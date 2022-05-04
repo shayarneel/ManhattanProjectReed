@@ -112,13 +112,30 @@ class Tests_macOS: XCTestCase {
         XCTAssertEqual(v,vans, accuracy: 1.0E-2, "Was not equal to this resolution.")
         }
     
+//    func testAl()  throws {
+//        let efficiency = Efficiency()
+//        var al = efficiency.alpha(rCritical: 8.366, rCore: 120.0, dCore: 19.1, nu: 2.637)/2.0
+//        var alans = 0.246
+//        XCTAssertEqual(al,alans, accuracy: 1.0E-2, "Was not equal to this resolution.")
+//        }
+    
+    
+    
     func testEff()  throws {
         let efficiency = Efficiency()
-        var eff = efficiency.eff(atomicMass: 238.02891, ltranscore: 3.596, rCritical: 8.366, rCore: 8.59, dCore: 18.71, nu: 2.637)
-        var effans = 0.01
+        var eff = efficiency.eff(atomicMass: 238.02891, lfisscore: 16.89, rCritical: 8.366, rCore: 8.366, dCore: 18.71, nu: 2.637)
+        var effans = 0.0
         XCTAssertEqual(eff,effans, accuracy: 1.0E-2, "Was not equal to this resolution.")
             }
     
+    func testmaxdr()  throws {
+        let efficiency = Efficiency()
+        var maxdr = efficiency.maxrCoreFinder(atomicMass: 238.02891, lfisscore: 16.89, ltranscore: <#T##Double#>, rCore: <#T##Double#>, dCore: <#T##Double#>, nu: <#T##Double#>)
+        eff(atomicMass: , lfisscore: , rCritical: 8.366, rCore: 8.366, dCore: 18.71, nu: 2.637)
+        var maxdrans = 20.0
+        XCTAssertEqual(maxdr,maxdrans, accuracy: 1.0E-2, "Was not equal to this resolution.")
+            }
+
         
 
     func testLaunchPerformance() throws {

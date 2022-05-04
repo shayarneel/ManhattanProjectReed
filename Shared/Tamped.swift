@@ -27,19 +27,19 @@ class Tamped: NSObject, ObservableObject{
     ///   - dTamper: density of material being used as the tamper (cm)
     ///   - dCore: density of the material beign used as the core (cm)
     /// - Returns: returns the critical radius for core, and the mass of the core, the mass of the tamper and the total mass
-    func tampedValues(rTamp: Double, ltranstamp: Double, ltranscore: Double, lfisscore: Double, sfisscore: Double, stranscore: Double, nu: Double, dTamper: Double, dCore: Double) -> (rCore: Double, coreMass: Double, tamperMass: Double, totalMass: Double){
+    func tampedValues(rTamp: Double, ltranstamp: Double, ltranscore: Double, lfisscore: Double, sfisscore: Double, stranscore: Double, nu: Double, dTamper: Double, dCore: Double) -> (rCritical: Double, coreMass: Double, tamperMass: Double, totalMass: Double){
         
-        let rCore = trcFinder(rTamp: rTamp, ltranstamp: ltranstamp, ltranscore: ltranscore, lfisscore: lfisscore, sfisscore: sfisscore, stranscore: stranscore, nu: nu)
+        let rCritical = trcFinder(rTamp: rTamp, ltranstamp: ltranstamp, ltranscore: ltranscore, lfisscore: lfisscore, sfisscore: sfisscore, stranscore: stranscore, nu: nu)
         
-        let coreVol = (4.0/3.0) * Double.pi * pow(rCore,3.0)
+        let coreVol = (4.0/3.0) * Double.pi * pow(rCritical,3.0)
         let coreMass = dCore * coreVol
         
-        let tamperVol = (4.0/3.0) * Double.pi * pow((rTamp - rCore),3.0)
+        let tamperVol = (4.0/3.0) * Double.pi * pow((rTamp - rCritical),3.0)
         let tamperMass = dTamper * tamperVol
         
         let totalMass = coreMass + tamperMass
         
-        return (rCore, coreMass, tamperMass, totalMass)
+        return (rCritical, coreMass, tamperMass, totalMass)
     }
     
     /// trcFinder: Calculates the critical value for core given a tamper radius
@@ -101,7 +101,7 @@ class Tamped: NSObject, ObservableObject{
             
             midTRCVal = (lowerTRCVal + higherTRCVal)/2.0
         }
-        print(midTRCVal)
+
         return midTRCVal
     }
 
