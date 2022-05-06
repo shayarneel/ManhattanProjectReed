@@ -32,10 +32,10 @@ class Tamped: NSObject, ObservableObject{
         let rCritical = trcFinder(rTamp: rTamp, ltranstamp: ltranstamp, ltranscore: ltranscore, lfisscore: lfisscore, sfisscore: sfisscore, stranscore: stranscore, nu: nu)
         
         let coreVol = (4.0/3.0) * Double.pi * pow(rCritical,3.0)
-        let coreMass = dCore * coreVol
+        let coreMass = dCore * coreVol/1000.0
         
         let tamperVol = (4.0/3.0) * Double.pi * pow((rTamp - rCritical),3.0)
-        let tamperMass = dTamper * tamperVol
+        let tamperMass = dTamper * tamperVol/1000.0
         
         let totalMass = coreMass + tamperMass
         

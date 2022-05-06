@@ -10,14 +10,39 @@ import CorePlot
 
 typealias plotDataType = [CPTScatterPlotField : Double]
 
+let xmin : Double = 75.0
+let xmax : Double = 375
+let ymin : Double = 150
+let ymax : Double = 450
+
+
 
 struct ContentView: View {
+    
+    @ObservedObject var neutronShielding = NeutronShielding()
+    
+    @State var randomWalk : [(lastxVal: Double, lastyVal: Double)] = [(lastxVal: 300, lastyVal: 300)]
+    
+    
+    @State var box : [[(lastxVal: Double, lastyVal: Double)]] =
+    [[(lastxVal: xmin, lastyVal: ymin),
+                       (lastxVal: xmin, lastyVal: ymax),
+                       (lastxVal: xmax, lastyVal: ymax),
+                       (lastxVal: xmax, lastyVal: ymin),
+                       (lastxVal: xmin, lastyVal: ymin)]]
+     
+    @State var particleNumString : String = "1000"
+    @State var meanFreePathString : String = "50.0"
+    @State var ElossString : String = "0.50"
+    @State var EmaxString : String = "10"
+    @State var numEscapedString : String = "0"
+    
     
     @ObservedObject var plotData = PlotClass()
     
     @ObservedObject var untamped = Untamped()
     @ObservedObject var tamped = Tamped()
-    @ObservedObject var efficiency = Efficiency()
+    @ObservedObject var eff = Efficiency()
     @ObservedObject var neutronSpectrum = NeutronSpectrum()
     @ObservedObject var monteCarloInt = MonteCarloInt(withData: true)
     
@@ -35,6 +60,16 @@ struct ContentView: View {
     @State var A = 0.0
     @State var atomicMass = 0.0
     @State var guess = 0.0
+    @State var rCore = 0.0
+    @State var ueff = 0.0
+    @State var uy = 0.0
+    @State var um = 0.0
+    @State var teff = 0.0
+    @State var ty = 0.0
+    @State var tm = 0.0
+    @State var energyRW = 0.0
+    @State var particleNum = 0.0
+    @State var ep = 0.0
     
     @State var dCoreString = "density of core"
     @State var ltranscoreString = "mean free path for neutron in the core"
@@ -47,6 +82,7 @@ struct ContentView: View {
     @State var dTamperString = "density of tamper"
     @State var AString = "A"
     @State var atomicMassString = "atomic mass"
+    @State var totalGuessString = "0"
     @State var guessString = "guesses"
     
     @State var urc = 0.0
@@ -69,6 +105,15 @@ struct ContentView: View {
     @State var maxValString = ""
     @State var lowerBoundValString = ""
     @State var upperBoundValString = ""
+    @State var intValString = ""
+    
+    @State var rCoreString = "Radius of the core"
+    
+    @State var ueffString = ""
+    @State var uyString = ""
+    
+    @State var teffString = ""
+    @State var tyString = ""
 
     
     
@@ -79,14 +124,6 @@ struct ContentView: View {
             
             VStack{
                 GroupBox(label: Text("Untamped Inputs"), content: {
-                    VStack(alignment: .center) {
-                        Text("atomic Number")
-                            .font(.callout)
-                            .bold()
-                        TextField("", text: $AString)
-                            .padding()
-                    }
-                    .padding(.top, 5.0)
 
                     VStack(alignment: .center) {
                         Text("denisity of core (g/cm^(3))")
@@ -143,7 +180,7 @@ struct ContentView: View {
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("core mass (g)")
+                            Text("core mass (kg)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $untampedMassString)
@@ -153,7 +190,9 @@ struct ContentView: View {
                         
                         }
                     })
-                    
+                
+                
+                
                 }
             
             VStack{
@@ -217,13 +256,13 @@ struct ContentView: View {
                             Text("tamped critical radius (cm)")
                                 .font(.callout)
                                 .bold()
-                            TextField("", text: $urcString)
+                            TextField("", text: $trcString)
                                 .padding()
                         }
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("core mass (g)")
+                            Text("core mass (kg)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $tampedCoreMassString)
@@ -231,7 +270,7 @@ struct ContentView: View {
                         }
                         
                         VStack(alignment: .center) {
-                            Text("tamper mass (g)")
+                            Text("tamper mass (kg)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $tamperMassString)
@@ -239,7 +278,7 @@ struct ContentView: View {
                         }
                         
                         VStack(alignment: .center) {
-                            Text("total mass (g)")
+                            Text("total mass (kg)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $totalMassString)
@@ -258,7 +297,7 @@ struct ContentView: View {
                     VStack{
                         
                         VStack(alignment: .center) {
-                            Text("atomic number")
+                            Text("mass number")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $AString)
@@ -287,7 +326,7 @@ struct ContentView: View {
                         }
                     })
                 
-                Button("neutron spectrum", action: {Task.init{await self.calculateNeutronSpectrum()}})
+                Button("neutron spectrum", action: self.calculateNeutronSpectrum)
                     .padding()
                 
                 CorePlot(dataForPlot: $neutronSpectrum.pEnergyArray,
@@ -301,6 +340,10 @@ struct ContentView: View {
                                         Text("Neutron Energy Spectrum")
                                     }
                 
+                Button("monte carlo integration", action: {Task.init{await self.calculateMonteCarloInt()}})
+                    .padding()
+                    .disabled(monteCarloInt.enableButton == false)
+                
                 drawingView(redLayer:$monteCarloInt.insideData, blueLayer: $monteCarloInt.outsideData, upperBound: $upperBoundValString, lowerBound: $lowerBoundValString, min: $minValString, max: $maxValString)
                     .padding()
                     .aspectRatio(1, contentMode: .fit)
@@ -308,14 +351,138 @@ struct ContentView: View {
                 // Stop the window shrinking to zero.
                 Spacer()
                 
+                VStack(alignment: .center) {
+                    Text("Integral Value")
+                        .font(.callout)
+                        .bold()
+                    TextField("", text: $intValString)
+                        .padding()
+                }
                
+            }
+            
+            VStack{
+                
+                VStack{
+                    GroupBox(label: Text("Efficiency Inputs"), content: {
+                        VStack(alignment: .center) {
+                            Text("Core Radius (cm)")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $rCoreString)
+                                .padding()
+                        }
+                        
+                        VStack(alignment: .center) {
+                            Text("atomic mass (amu)")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $atomicMassString)
+                                .padding()
+                        }
+                    })
+                    
+                    Button("untamped efficiency", action: self.calculateUntampedEff)
+                        .padding()
+                    Button("tamped efficiency", action: self.calculateTampedEff)
+                        .padding()
+   
+                }
+                
+                VStack{
+                    
+                    GroupBox(label: Text("Untamped Efficiency"), content: {
+                        VStack(alignment: .center) {
+                            Text("Efficiency")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $ueffString)
+                                .padding()
+                        }
+                        .padding(.top, 5.0)
+                        
+                        VStack(alignment: .center) {
+                            Text("Yield (J)")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $uyString)
+                                .padding()
+                        }
+                        .padding(.top, 5.0)
+                        
+                    })
+                
+                
+            }
+                
+                VStack{
+                    
+                    GroupBox(label: Text("Tamped Efficiency"), content: {
+                        VStack(alignment: .center) {
+                            Text("Efficiency")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $teffString)
+                                .padding()
+                        }
+                        .padding(.top, 5.0)
+                        
+                        VStack(alignment: .center) {
+                            Text("Yield (J)")
+                                .font(.callout)
+                                .bold()
+                            TextField("", text: $tyString)
+                                .padding()
+                        }
+                        .padding(.top, 5.0)
+
+                    })
+                
+                
             }
             
                 
             }
-            .padding()  
+            .padding()
+            
+            VStack{
+                
+                GroupBox(label: Text("Random Walk Inputs"), content: {
+                    
+                    VStack {
+                        Text("Energy")
+                        TextField("Energy of neutron", text: $EmaxString)
+                            .frame(width: 100.0)
+                    }.padding()
+                    
+                })
+                
+                
+                
+                // Drawing
+                boxView(Layer1: $randomWalk, Layer2: $box)
+                    .padding()
+                    .aspectRatio(1, contentMode: .fit)
+                    .drawingGroup()
+                
+                Button("Random Walk", action: self.calculateRandomWalk)
+                    .padding()
+                    .frame(width: 200.0)
+                    .disabled(neutronShielding.enableButton == false)
+                
+                VStack {
+                    Text("Number Escaped")
+                    TextField("Particles that leave the box", text: $numEscapedString)
+                        .frame(width: 100.0)
+                        .disabled(neutronShielding.enableButton == false)
+                }.padding()
+            }
+            
+            
+
             
         }
+    }
     
     func calculateUntamped() {
         
@@ -356,34 +523,123 @@ struct ContentView: View {
         tamperMass = trcvals.2
         totalMass = trcvals.3
         
-        urcString = String(urc)
+        trcString = String(trc)
         tampedCoreMassString = String(tampedCoreMass)
         tamperMassString = String(tamperMass)
         totalMassString = String(totalMass)
             }
     
     
-    func calculateNeutronSpectrum() async {
+    func calculateNeutronSpectrum() {
         
         neutronSpectrum.pEnergyPlot()
+        
+        
+    }
+    
+    func calculateMonteCarloInt() async {
         
         A = Double(AString)!
         atomicMass = Double(atomicMassString)!
         
-//        monteCarloInt.lowerBoundVal = neutronSpectrum.bEnergy(A: A, atomicMass: atomicMass)
-//        monteCarloInt.upperBoundVal = 10.0
-//        monteCarloInt.minVal = 0.0
-//        monteCarloInt.maxVal = neutronSpectrum.pEnergy(energy: monteCarloInt.lowerBoundVal)
-//
-//        lowerBoundValString = String(monteCarloInt.lowerBoundVal)
-//        upperBoundValString = String(monteCarloInt.upperBoundVal)
-//        minValString = String(monteCarloInt.minVal)
-//        maxValString = String(monteCarloInt.maxVal)
-        monteCarloInt.totalGuesses = Int(guessString) ?? Int(0.0)
         
-        await monteCarloInt.calculateIntVal(lowerBoundVal: neutronSpectrum.bEnergy(A: A, atomicMass: atomicMass), upperBoundVal: 10.0, minVal: 0.0, maxVal: neutronSpectrum.pEnergy(energy: monteCarloInt.lowerBoundVal))
-    }
+        monteCarloInt.lowerBoundVal = neutronSpectrum.bEnergy(A: A, atomicMass: atomicMass)
+        monteCarloInt.upperBoundVal = 10.0
+        monteCarloInt.minVal = 0.0
+        monteCarloInt.maxVal = neutronSpectrum.pEnergy(energy: monteCarloInt.lowerBoundVal)
+
+        lowerBoundValString = String(monteCarloInt.lowerBoundVal)
+        upperBoundValString = String(monteCarloInt.upperBoundVal)
+        minValString = String(monteCarloInt.minVal)
+        maxValString = String(monteCarloInt.maxVal)
+        
+        monteCarloInt.setButtonEnable(state: false)
+        
+        monteCarloInt.guesses = Int(guessString)!
+        monteCarloInt.totalGuesses = Int(totalGuessString) ?? Int(0.0)
+        
+        await monteCarloInt.calculateIntVal(lowerBoundVal: Double(lowerBoundValString)!, upperBoundVal: Double(upperBoundValString)!, minVal: Double(minValString)!, maxVal: Double(maxValString)!)
+        
+        totalGuessString = monteCarloInt.totalGuessesString
+        
+        intValString = monteCarloInt.IntValString
+        
+        monteCarloInt.setButtonEnable(state: true)
+        
         }
+    
+    func calculateUntampedEff() {
+        
+        rCore = Double(rCoreString)!
+        lfisscore = Double(lfisscoreString)!
+        ltranscore = Double(ltranscoreString)!
+        nu = Double(nuString)!
+        dCore = Double(dCoreString)!
+        atomicMass = Double(atomicMassString)!
+        
+        urc = Double(urcString)!
+        
+        ueff = eff.eff(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: urc, rCore: rCore, dCore: dCore, nu: nu)
+        uy = eff.yield(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: urc, rCore: rCore, dCore: dCore, nu: nu)
+
+        
+        ueffString = String(ueff)
+        uyString = String(uy)
+        
+    }
+    
+    func calculateTampedEff() {
+        
+        rCore = Double(rCoreString)!
+        lfisscore = Double(lfisscoreString)!
+        ltranscore = Double(ltranscoreString)!
+        nu = Double(nuString)!
+        dCore = Double(dCoreString)!
+        atomicMass = Double(atomicMassString)!
+
+        trc = Double(trcString)!
+        
+        teff = eff.eff(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: trc, rCore: rCore, dCore: dCore, nu: nu)
+        ty = eff.yield(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: trc, rCore: rCore, dCore: dCore, nu: nu)
+        
+        teffString = String(teff)
+        tyString = String(ty)
+
+    }
+    
+    func calculateRandomWalk() {
+        
+        let neutronSpectrum = NeutronSpectrum()
+        let eff = Efficiency()
+        
+        dCore = Double(dCoreString)!
+        atomicMass = Double(atomicMassString)!
+        energyRW = Double(EmaxString)!
+        ep = Double(ueffString)!
+        urc = Double(urcString)!
+        
+        let n = eff.numDensity(dCore: dCore, atomicMass: atomicMass)
+        let probEnergy = neutronSpectrum.pEnergy(energy: energyRW)
+        
+        //Number of neutrons with energy E that are emitted during the fission process
+        let intermediateVal = ep * n * probEnergy * (4.0/3.0) * Double.pi * pow(urc, 3.0)
+        particleNum = intermediateVal.rounded()
+	
+        particleNumString = String(particleNum)
+        meanFreePathString = ltranscoreString
+        
+        
+        neutronShielding.setButtonEnable(state: false)
+        self.neutronShielding.objectWillChange.send()
+        
+        randomWalk.append(contentsOf: neutronShielding.MultipleWalks(numParticles: Int(particleNumString)!, meanFreePath: Double(meanFreePathString)!, Eloss: Double(ElossString)!, Emax: Double(EmaxString)!))
+            
+        
+        numEscapedString = String(neutronShielding.numEscape)
+        neutronShielding.setButtonEnable(state: true)
+    }
+}
+
     
    
 

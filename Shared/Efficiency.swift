@@ -11,25 +11,7 @@ import CorePlot
 
 class Efficiency: NSObject, ObservableObject{
     
-    
-    /// fissmass: mass that undergoes fission
-    /// - Parameters:
-    ///   - atomicMass: atomic mass (g mol^-1)
-    ///   - ltranscore: mean free path for transmission (cm)
-    ///   - rCritical: critical core radius (cm)
-    ///   - rCore: core radius input by user (cm)
-    ///   - dCore: density of core materical (g cm^-3)
-    ///   - nu: numer of neutrons released per fission
-    /// - Returns: mass that undegoes fission (g)
-    func fissMass(atomicMass: Double, lfisscore: Double, rCritical: Double, rCore: Double, dCore: Double, nu: Double) -> Double {
-        
-        let e = eff(atomicMass: atomicMass, lfisscore: lfisscore, rCritical: rCritical, rCore: rCore, dCore: dCore, nu: nu)
-        let mCore = (4.0/3.0) * Double.pi * pow(rCore, 3.0) * dCore
-        
-        let mFiss = e * mCore
-        
-        return mFiss
-    }
+
     
     
     /// yield: use approximate eficiency to comput teh yield of the object - pg. 64 (of pdf)

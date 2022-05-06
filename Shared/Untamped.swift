@@ -26,7 +26,7 @@ class Untamped: NSObject, ObservableObject{
         let urc = urcFinder(lfisscore: lfisscore, ltranscore: ltranscore, nu: nu)
         
         let coreVol = (4.0/3.0) * Double.pi * pow(urc,3.0)
-        let coreMass = density * coreVol
+        let coreMass = density * coreVol/1000.0
         
         return (urc, coreMass)
     }

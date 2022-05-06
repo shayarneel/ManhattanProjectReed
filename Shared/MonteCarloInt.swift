@@ -10,8 +10,6 @@ import SwiftUI
 
 class MonteCarloInt: NSObject, ObservableObject {
     
-    let neutronSpectrum = NeutronSpectrum()
-    
     @MainActor @Published var insideData = [(xPoint: Double, yPoint: Double)]()
     @MainActor @Published var outsideData = [(xPoint: Double, yPoint: Double)]()
     @Published var totalGuessesString = ""
@@ -45,7 +43,10 @@ class MonteCarloInt: NSObject, ObservableObject {
     func calculateIntVal(lowerBoundVal: Double, upperBoundVal: Double, minVal: Double, maxVal: Double) async {
         
         var maxGuesses = 0.0
-        let Area = (upperBoundVal - lowerBoundVal)*(maxVal - minVal)
+        let intArea = (upperBoundVal - lowerBoundVal) * (maxVal - minVal)
+        let totalArea = (10.0 - 0.0) * (0.35 - 0.0)
+        let Area = intArea/totalArea
+        
         
         maxGuesses = Double(guesses)
         
@@ -71,7 +72,7 @@ class MonteCarloInt: NSObject, ObservableObject {
         
     }
 
-    /// calculates the Monte Carlo Integral of a Circle
+    /// calculates the Monte Carlo Integral
     ///
     /// - Parameters:
     ///   - lowerBoundVal: lower bound of integral
@@ -81,6 +82,8 @@ class MonteCarloInt: NSObject, ObservableObject {
     ///   - maxGuesses: number of guesses to use in the calculaton
     /// - Returns: ratio of points inside to total guesses. Must mulitply by area of box in calling function
     func calculateMonteCarloIntegral(lowerBound: Double, upperBound: Double, min: Double, max: Double, maxGuesses: Double) async -> Double {
+        
+        let neutronSpectrum = NeutronSpectrum()
         
         var numberOfGuesses = 0.0
         var pointUnderCurve = 0.0
@@ -168,7 +171,7 @@ class MonteCarloInt: NSObject, ObservableObject {
         
     }
     
-    /// updatePiString
+    /// updateIntValString
     /// The function runs on the main thread so it can update the GUI
     /// - Parameter text: contains the string containing the current value of intval
     @MainActor func updateIntValString(text:String){

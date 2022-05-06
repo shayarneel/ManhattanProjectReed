@@ -3,22 +3,4 @@
    uuid = "FCF45E08-31FA-4AA4-A29A-989FFE8D9F6F"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4AF8871-2CD4-40DE-8998-D6289EA6C8A9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/MonteCarloInt.swift"
-            startingColumnNumber = "13"
-            endingColumnNumber = "21"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "calculateIntVal(lowerBoundVal:upperBoundVal:minVal:maxVal:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

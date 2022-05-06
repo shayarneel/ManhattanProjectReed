@@ -55,7 +55,7 @@ struct drawIntegral: Shape {
     
    
     let smoothness : CGFloat = 1.0
-    var drawingPoints: [(xPoint: Double, yPoint: Double)]  ///Array of tuples
+    var drawingPoints: [(xPoint: Double, yPoint: Double)]  //Array of tuples
     
     var upperBoundVal : Double
     var lowerBoundVal : Double
@@ -76,7 +76,7 @@ struct drawIntegral: Shape {
         
         for item in drawingPoints {
             
-            path.addRect(CGRect(x: item.xPoint*Double(scale)+Double(center.x), y: -(item.yPoint*Double(scale)+Double(center.y)) + rect.height, width: 1.0 , height: 1.0))
+            path.addRect(CGRect(x: item.xPoint*Double(scale)-Double(center.x), y: -(item.yPoint*Double(scale)+Double(center.y)) + rect.height, width: 1.0 , height: 1.0))
             
         }
 

@@ -67,6 +67,14 @@
 		2B3CF0A7281CD979004BC845 /* CorePlot in Frameworks */ = {isa = PBXBuildFile; productRef = 2B3CF0A6281CD979004BC845 /* CorePlot */; };
 		2B3CF0A8281CDB5A004BC845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF026281CD762004BC845 /* ContentView.swift */; };
 		2B3CF0A9281CDB5B004BC845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF026281CD762004BC845 /* ContentView.swift */; };
+		2B3CF0AB28249322004BC845 /* NeutronShielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AA28249322004BC845 /* NeutronShielding.swift */; };
+		2B3CF0AC28249322004BC845 /* NeutronShielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AA28249322004BC845 /* NeutronShielding.swift */; };
+		2B3CF0AD28249322004BC845 /* NeutronShielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AA28249322004BC845 /* NeutronShielding.swift */; };
+		2B3CF0AE28249322004BC845 /* NeutronShielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AA28249322004BC845 /* NeutronShielding.swift */; };
+		2B3CF0B028249351004BC845 /* ShieldingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AF28249351004BC845 /* ShieldingBox.swift */; };
+		2B3CF0B128249351004BC845 /* ShieldingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AF28249351004BC845 /* ShieldingBox.swift */; };
+		2B3CF0B228249351004BC845 /* ShieldingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AF28249351004BC845 /* ShieldingBox.swift */; };
+		2B3CF0B328249351004BC845 /* ShieldingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CF0AF28249351004BC845 /* ShieldingBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +118,8 @@
 		2B3CF06F281CD855004BC845 /* PlotClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotClass.swift; sourceTree = "<group>"; };
 		2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeutronSpectrum.swift; sourceTree = "<group>"; };
 		2B3CF071281CD855004BC845 /* Efficiency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Efficiency.swift; sourceTree = "<group>"; };
+		2B3CF0AA28249322004BC845 /* NeutronShielding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeutronShielding.swift; sourceTree = "<group>"; };
+		2B3CF0AF28249351004BC845 /* ShieldingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldingBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +178,8 @@
 				2B3CF069281CD855004BC845 /* DrawingView.swift */,
 				2B3CF068281CD855004BC845 /* MonteCarloInt.swift */,
 				2B3CF070281CD855004BC845 /* NeutronSpectrum.swift */,
+				2B3CF0AA28249322004BC845 /* NeutronShielding.swift */,
+				2B3CF0AF28249351004BC845 /* ShieldingBox.swift */,
 				2B3CF071281CD855004BC845 /* Efficiency.swift */,
 				2B3CF067281CD855004BC845 /* Tamped.swift */,
 				2B3CF066281CD855004BC845 /* Untamped.swift */,
@@ -411,6 +423,8 @@
 				2B3CF092281CD856004BC845 /* PlotClass.swift in Sources */,
 				2B3CF076281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04D281CD764004BC845 /* ManhattanProjectReedApp.swift in Sources */,
+				2B3CF0B028249351004BC845 /* ShieldingBox.swift in Sources */,
+				2B3CF0AB28249322004BC845 /* NeutronShielding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +445,8 @@
 				2B3CF093281CD856004BC845 /* PlotClass.swift in Sources */,
 				2B3CF077281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04E281CD764004BC845 /* ManhattanProjectReedApp.swift in Sources */,
+				2B3CF0B128249351004BC845 /* ShieldingBox.swift in Sources */,
+				2B3CF0AC28249322004BC845 /* NeutronShielding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +458,7 @@
 				2B3CF084281CD856004BC845 /* FindingZero.swift in Sources */,
 				2B3CF0A8281CDB5A004BC845 /* ContentView.swift in Sources */,
 				2B3CF088281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
+				2B3CF0AD28249322004BC845 /* NeutronShielding.swift in Sources */,
 				2B3CF040281CD764004BC845 /* Tests_iOSLaunchTests.swift in Sources */,
 				2B3CF08C281CD856004BC845 /* CorePlot.swift in Sources */,
 				2B3CF074281CD856004BC845 /* Untamped.swift in Sources */,
@@ -450,6 +467,7 @@
 				2B3CF080281CD856004BC845 /* DrawingView.swift in Sources */,
 				2B3CF090281CD856004BC845 /* PlotDataClass.swift in Sources */,
 				2B3CF094281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF0B228249351004BC845 /* ShieldingBox.swift in Sources */,
 				2B3CF078281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF03E281CD764004BC845 /* Tests_iOS.swift in Sources */,
 			);
@@ -463,6 +481,7 @@
 				2B3CF085281CD856004BC845 /* FindingZero.swift in Sources */,
 				2B3CF0A9281CDB5B004BC845 /* ContentView.swift in Sources */,
 				2B3CF089281CD856004BC845 /* ChangingPlotParameters.swift in Sources */,
+				2B3CF0AE28249322004BC845 /* NeutronShielding.swift in Sources */,
 				2B3CF04C281CD764004BC845 /* Tests_macOSLaunchTests.swift in Sources */,
 				2B3CF08D281CD856004BC845 /* CorePlot.swift in Sources */,
 				2B3CF075281CD856004BC845 /* Untamped.swift in Sources */,
@@ -471,6 +490,7 @@
 				2B3CF081281CD856004BC845 /* DrawingView.swift in Sources */,
 				2B3CF091281CD856004BC845 /* PlotDataClass.swift in Sources */,
 				2B3CF095281CD856004BC845 /* PlotClass.swift in Sources */,
+				2B3CF0B328249351004BC845 /* ShieldingBox.swift in Sources */,
 				2B3CF079281CD856004BC845 /* Tamped.swift in Sources */,
 				2B3CF04A281CD764004BC845 /* Tests_macOS.swift in Sources */,
 			);
