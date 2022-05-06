@@ -58,7 +58,9 @@ class Efficiency: NSObject, ObservableObject{
         let Ef = 170.0 * 1.6021 * 1.0E-13 // Set Fc to 170 MeV, converted to joules
         let effden = 8.0 * pow(tau, 2.0) * n * Ef
         
-        let e = effnum/effden
+        let einter = effnum/effden
+        
+        let e = einter/(2.39006 * pow(10.0, -10.0))
         
         return e
     }

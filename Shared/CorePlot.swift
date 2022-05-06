@@ -84,7 +84,7 @@ public struct CorePlot: ViewRepresentable {
         }
 
         if let y = axisSet.yAxis {
-            y.majorIntervalLength   = 0.5
+            y.majorIntervalLength   = 0.1
             y.minorTicksPerInterval = 5
             y.orthogonalPosition    = 0.0
             y.delegate = context.coordinator

@@ -51,10 +51,10 @@ class NeutronShielding: NSObject, ObservableObject{
     func RandomWalk(meanFreePath: Double, Eloss: Double, Emax: Double) -> [(xval: Double, yval: Double)] {
         
         //Defining the boundaries of the box
-        let RightWall = 100.0
+        let RightWall = 150.0
         let TopWall = 100.0
-        let BottomWall = 0.0
-        let LeftWall = 0.0
+        let BottomWall = 50.0
+        let LeftWall = -50.0
         
         var xPoint = 0.0    //Stores the x coordinate of the particle at each step
         var yPoint = 0.0    //Stores the y coordinate of the particle at each step

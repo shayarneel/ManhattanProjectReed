@@ -30,12 +30,12 @@ struct ContentView: View {
                        (lastxVal: xmax, lastyVal: ymax),
                        (lastxVal: xmax, lastyVal: ymin),
                        (lastxVal: xmin, lastyVal: ymin)]]
-     
-    @State var particleNumString : String = "1000"
-    @State var meanFreePathString : String = "50.0"
-    @State var ElossString : String = "0.50"
-    @State var EmaxString : String = "10"
-    @State var numEscapedString : String = "0"
+
+    @State var particleNumString : String = "Initial number of neutrons"
+    @State var meanFreePathString : String = ""
+    @State var ElossString : String = "Energy loss after collission"
+    @State var EmaxString : String = "Initial energy of neutron"
+    @State var numEscapedString : String = ""
     
     
     @ObservedObject var plotData = PlotClass()
@@ -70,6 +70,7 @@ struct ContentView: View {
     @State var energyRW = 0.0
     @State var particleNum = 0.0
     @State var ep = 0.0
+    @State var numEscaped = 0.0
     
     @State var dCoreString = "density of core"
     @State var ltranscoreString = "mean free path for neutron in the core"
@@ -114,6 +115,8 @@ struct ContentView: View {
     
     @State var teffString = ""
     @State var tyString = ""
+    
+    @State var NString = ""
 
     
     
@@ -402,7 +405,7 @@ struct ContentView: View {
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("Yield (J)")
+                            Text("Yield (tons of TNT)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $uyString)
@@ -428,7 +431,7 @@ struct ContentView: View {
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("Yield (J)")
+                            Text("Yield (tons of TNT)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $tyString)
@@ -450,8 +453,20 @@ struct ContentView: View {
                 GroupBox(label: Text("Random Walk Inputs"), content: {
                     
                     VStack {
-                        Text("Energy")
-                        TextField("Energy of neutron", text: $EmaxString)
+                        Text("Number of Particles")
+                        TextField("", text: $particleNumString)
+                            .frame(width: 100.0)
+                    }.padding()
+                    
+                    VStack {
+                        Text("Maximum Energy")
+                        TextField("Energy of incoming particles", text: $EmaxString)
+                            .frame(width: 100.0)
+                    }.padding()
+                    
+                    VStack {
+                        Text("Energy Loss")
+                        TextField("Energy loss at each step", text: $ElossString)
                             .frame(width: 100.0)
                     }.padding()
                     
@@ -470,12 +485,25 @@ struct ContentView: View {
                     .frame(width: 200.0)
                     .disabled(neutronShielding.enableButton == false)
                 
-                VStack {
-                    Text("Number Escaped")
-                    TextField("Particles that leave the box", text: $numEscapedString)
-                        .frame(width: 100.0)
-                        .disabled(neutronShielding.enableButton == false)
-                }.padding()
+                GroupBox(label: Text("Random Walk Inputs"), content: {
+                    
+                    VStack {
+                        Text("Number Escaped")
+                        TextField("Particles that leave the box", text: $numEscapedString)
+                            .frame(width: 100.0)
+                            .disabled(neutronShielding.enableButton == false)
+                    }.padding()
+                    
+                    VStack {
+                        Text("Actual Number Escaped")
+                        TextField("Actual number of particles that leave the box", text: $NString)
+                            .frame(width: 100.0)
+                            .disabled(neutronShielding.enableButton == false)
+                    }.padding()
+                    
+                })
+                
+                
             }
             
             
@@ -609,26 +637,8 @@ struct ContentView: View {
     
     func calculateRandomWalk() {
         
-        let neutronSpectrum = NeutronSpectrum()
-        let eff = Efficiency()
-        
-        dCore = Double(dCoreString)!
-        atomicMass = Double(atomicMassString)!
-        energyRW = Double(EmaxString)!
-        ep = Double(ueffString)!
-        urc = Double(urcString)!
-        
-        let n = eff.numDensity(dCore: dCore, atomicMass: atomicMass)
-        let probEnergy = neutronSpectrum.pEnergy(energy: energyRW)
-        
-        //Number of neutrons with energy E that are emitted during the fission process
-        let intermediateVal = ep * n * probEnergy * (4.0/3.0) * Double.pi * pow(urc, 3.0)
-        particleNum = intermediateVal.rounded()
-	
-        particleNumString = String(particleNum)
         meanFreePathString = ltranscoreString
-        
-        
+       
         neutronShielding.setButtonEnable(state: false)
         self.neutronShielding.objectWillChange.send()
         
@@ -637,6 +647,25 @@ struct ContentView: View {
         
         numEscapedString = String(neutronShielding.numEscape)
         neutronShielding.setButtonEnable(state: true)
+        
+        numEscaped = Double(numEscapedString)!
+        
+        let eff = Efficiency()
+        let ns = NeutronSpectrum()
+        
+        dCore = Double(dCoreString)!
+        atomicMass = Double(atomicMassString)!
+        
+        let energy = Double(EmaxString)!
+        
+        let ratio = numEscaped/particleNum
+        let pEnergy = ns.pEnergy(energy: energy)
+        let n = eff.numDensity(dCore:dCore, atomicMass: atomicMass)
+        
+        let N = ueff * n * (4.0/3.0) * Double.pi * pow(urc, 3.0) * pEnergy * ratio
+        
+        NString = String(N)
+        
     }
 }
 
