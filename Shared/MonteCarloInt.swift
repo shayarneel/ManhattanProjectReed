@@ -62,7 +62,7 @@ class MonteCarloInt: NSObject, ObservableObject {
         
         ///Calculates the value of integral by normalizing to teh bounding box
         
-        intval = totalIntegral/Double(totalGuesses) * Area
+        intval = totalIntegral/Double(totalGuesses) * (Area/10.0)
         
         await updateIntValString(text: "\(intval)")
         

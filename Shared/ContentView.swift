@@ -405,7 +405,7 @@ struct ContentView: View {
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("Yield (tons of TNT)")
+                            Text("Yield (J)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $uyString)
@@ -431,7 +431,7 @@ struct ContentView: View {
                         .padding(.top, 5.0)
                         
                         VStack(alignment: .center) {
-                            Text("Yield (tons of TNT)")
+                            Text("Yield (J)")
                                 .font(.callout)
                                 .bold()
                             TextField("", text: $tyString)
@@ -484,24 +484,7 @@ struct ContentView: View {
                     .padding()
                     .frame(width: 200.0)
                     .disabled(neutronShielding.enableButton == false)
-                
-                GroupBox(label: Text("Random Walk Inputs"), content: {
-                    
-                    VStack {
-                        Text("Number Escaped")
-                        TextField("Particles that leave the box", text: $numEscapedString)
-                            .frame(width: 100.0)
-                            .disabled(neutronShielding.enableButton == false)
-                    }.padding()
-                    
-                    VStack {
-                        Text("Actual Number Escaped")
-                        TextField("Actual number of particles that leave the box", text: $NString)
-                            .frame(width: 100.0)
-                            .disabled(neutronShielding.enableButton == false)
-                    }.padding()
-                    
-                })
+            	
                 
                 
             }
@@ -647,24 +630,6 @@ struct ContentView: View {
         
         numEscapedString = String(neutronShielding.numEscape)
         neutronShielding.setButtonEnable(state: true)
-        
-        numEscaped = Double(numEscapedString)!
-        
-        let eff = Efficiency()
-        let ns = NeutronSpectrum()
-        
-        dCore = Double(dCoreString)!
-        atomicMass = Double(atomicMassString)!
-        
-        let energy = Double(EmaxString)!
-        
-        let ratio = numEscaped/particleNum
-        let pEnergy = ns.pEnergy(energy: energy)
-        let n = eff.numDensity(dCore:dCore, atomicMass: atomicMass)
-        
-        let N = ueff * n * (4.0/3.0) * Double.pi * pow(urc, 3.0) * pEnergy * ratio
-        
-        NString = String(N)
         
     }
 }
