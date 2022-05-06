@@ -34,7 +34,7 @@ class Tamped: NSObject, ObservableObject{
         let coreVol = (4.0/3.0) * Double.pi * pow(rCritical,3.0)
         let coreMass = dCore * coreVol/1000.0
         
-        let tamperVol = (4.0/3.0) * Double.pi * pow((rTamp - rCritical),3.0)
+        let tamperVol = (4.0/3.0) * Double.pi * pow((rTamp),3.0)
         let tamperMass = dTamper * tamperVol/1000.0
         
         let totalMass = coreMass + tamperMass
